@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const Player = document.getElementById('mainbody');
     const prevBtn = document.getElementById('prevBtn');  // 上一曲按钮
     const nextBtn = document.getElementById('nextBtn');  // 下一曲按钮
+    const musictitle = document.getElementById('musictitle');
 
     const playListItems = playList.querySelectorAll('li');
 
@@ -53,6 +54,8 @@ document.addEventListener('DOMContentLoaded', () => {
             audioPlayer.src = songSrc;
             audioPlayer.play();
             playPauseBtn.textContent = 'Pause';
+            currentSongIndex = Array.from(playListItems).indexOf(this);
+            updateMusicTitle(currentSongIndex);
         });
     });
 
@@ -69,12 +72,18 @@ document.addEventListener('DOMContentLoaded', () => {
         nextSong();
     });
 
+    function updateMusicTitle(index) {
+    const songText = playListItems[index].textContent.trim();
+    musictitle.textContent = songText;
+    }
+
     function prevSong() {
         currentSongIndex = (currentSongIndex - 1 + playListItems.length) % playListItems.length;  // 确保索引在有效范围内
         const prevSongSrc = playListItems[currentSongIndex].getAttribute('src');
         audioPlayer.src = prevSongSrc;
         audioPlayer.play();
         playPauseBtn.textContent = '暂停';
+        updateMusicTitle(currentSongIndex);
     }
 
     // 切换到下一曲
@@ -84,6 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
         audioPlayer.src = nextSongSrc;
         audioPlayer.play();
         playPauseBtn.textContent = '暂停';
+        updateMusicTitle(currentSongIndex);
     }
    
     playListButton.addEventListener('click', function() {
@@ -105,5 +115,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     });
 
-    
+    updateMusicTitle(currentSongIndex);    
 });

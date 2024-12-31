@@ -14,27 +14,20 @@
     <!-- 音频播放器容器 -->
     <div id="mainbody">
         <div id="Player" class="mainbody"> 
-            <!-- 控制面板 -->
             <div class="controls">
-                <button id="prevBtn" aria-label="上一曲">上一曲</button>
-                <!-- 播放/暂停按钮 -->
-                <button id="playPauseBtn" aria-label="播放/暂停">播放/暂停</button>
-                <button id="nextBtn" aria-label="下一曲">下一曲</button>
-                <!-- 进度条 -->
+                <span id="musictitle">未播放</span>
                 <input type="range" id="seekBar" min="0" value="0" max="100">
-                <!-- 当前时间和总时长显示 -->
-                <span id="currentTime">0:00</span> / <span id="duration">0:00</span>   
-            </div>
-            <!-- 切换播放列表按钮 -->        
-                <button id="listButton" aria-label="切换播放列表">播放列表</button>
-            <!-- 音频元素 -->
+                <span id="currentTime">0:00</span> / <span id="duration">0:00</span><br>
+                <button id="prevBtn" aria-label="上一曲">上一曲</button>
+                <button id="playPauseBtn" aria-label="播放/暂停">播放/暂停</button>
+                <button id="nextBtn" aria-label="下一曲">下一曲</button>   
+            </div>       
+            <button id="listButton" aria-label="切换播放列表">播放列表</button>
             <audio id="audioPlayer"></audio>
             <button id="exitButton" >>>></button>
         </div>
         <div id="playList" class="collapsible">
-                <!-- 可折叠的播放列表 -->
                 <ul>
-                    <!-- 每个列表项代表一首歌曲，并包含音频文件路径 -->
                     <li src="./File/RDJMB x SECMOS - Getting Started (Elluzion Flip).mp3">歌曲1</li>
                     <li src="./File/Somewhere I Belong.flac">歌曲2</li>
                     <li src="./File/yet-another-song.mp3">歌曲3</li>

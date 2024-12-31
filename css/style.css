@@ -2,18 +2,15 @@
 
 /* 定义全局变量 */
 :root {
-    /*--background-color: #000; /* 背景颜色 */
     --padding: 20px; /* 内边距 */
     --border-radius: 10px; /* 圆角半径 */
     --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 阴影效果 */
-    /*--transition-duration: 0.5s; /* 过渡持续时间 */
+    
 } 
 
 /* 设置页面整体样式 */
 body {
   font-family: Arial, sans-serif;  
-    /*justify-content: center; /* 水平居中 */
-    /*align-items: center; /* 垂直居中 */
   text-align: center; /* 文本居中 */
   background-color: black; /* 背景颜色 */
   margin: 0; /* 去除默认外边距 */
@@ -24,21 +21,23 @@ body {
   position: absolute; /* 绝对定位 */
   bottom: 0px; /* 距离底部 0px */
   left: 0px; /* 距离左边 0px */
-  width: auto; /* 宽度占满整个屏幕 */
-  height: auto; /* 高度占满整个屏幕 */
   display: flex; /* 使用 Flexbox 布局 */
   flex-direction: column;
   justify-content: flex-start; /* 水平居左 */
   align-items: flex-end; /* 垂直居底 */
   padding: 0; /* 留出一定的内边距 */
-  transform: translateX(-354px);
+  transform: translateX(-323px);
   transition: transform 0.7s ease;
 }
 
-/* 设置播放器容器样式 */
+#mainbody.expanded{
+  transform: translateX(0) ;
+
+}
+
 #Player {
-  width: 350px;
-  height: 145px;;
+  width: 321px;
+  height: 120px;
   background-image: url(../img/test_cyperpunk.jpg); /* 背景图片 */
   border-radius: var(--border-radius); /* 圆角半径 */
   box-shadow: var(--box-shadow); /* 阴影效果 */
@@ -49,9 +48,8 @@ body {
   
 }
 
-#mainbody.expanded{
-  transform: translateX(0) ;
-  transition: transform 0.7s ease;
+#musictitle{ 
+  background-color: #fff;
 }
 
 /* 设置控制面板样式 */
@@ -78,8 +76,8 @@ audio {
 }
 
 #playList {
-  width: 350px;
-  height: 350px;
+  width: 320px;
+  height: 200px;
   border-radius: var(--border-radius); /* 圆角半径 */
   box-shadow: var(--box-shadow); /* 阴影效果 */
   padding: var(--padding); /* 内边距 */
@@ -89,23 +87,24 @@ audio {
 
 #exitButton {
   position: absolute;
-    right: 0;
-    top: 50%;
-    height: 30%;
-    margin-bottom: 10px;
-    padding: 10px 5px;
-    cursor: pointer;
-    transform: translateY(-50%);
+  right: 0;
+  top: 50%;
+  height: 30%;
+  margin-bottom: 10px;
+  padding: 10px 5px;
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: transform 0.5s ease;
 }
 
 .collapsible {
-    border: 1px solid #ccc;
-    padding: 10px;
-    max-height: 0; /* Start with collapsed state */
-    overflow: hidden;
-    transition: max-height 1s ease;
+  border: 1px solid #ccc;
+  padding: 10px;
+  max-height: 0; /*从折叠状态开始*/
+  overflow: hidden;
+  transition: max-height 0.5s ease;
 }
 
 .collapsible.expanded {
-    max-height: 500px; /* Adjust based on your content size */
+  max-height: 200px; /* 根据您的内容大小进行调整 */
 }
