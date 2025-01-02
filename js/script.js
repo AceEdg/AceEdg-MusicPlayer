@@ -20,10 +20,12 @@ document.addEventListener('DOMContentLoaded', () => {
     playPauseBtn.addEventListener('click', () => {
         if (audioPlayer.paused) {
             audioPlayer.play();
-            playPauseBtn.textContent = '暂停';
+            //playPauseBtn.textContent = '暂停';
+            playPauseBtn.style.backgroundImage = 'url("./img/pauseBtn.png")';
         } else {
             audioPlayer.pause();
-            playPauseBtn.textContent = '播放';
+            //playPauseBtn.textContent = '播放';
+            playPauseBtn.style.backgroundImage = 'url("./img/playBtn.png")';
         }
     });
 
@@ -53,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const songSrc = this.getAttribute('src');
             audioPlayer.src = songSrc;
             audioPlayer.play();
-            playPauseBtn.textContent = 'Pause';
+            playPauseBtn.style.backgroundImage = 'url("./img/pauseBtn.png")';
             currentSongIndex = Array.from(playListItems).indexOf(this);
             updateMusicTitle(currentSongIndex);
         });
@@ -82,7 +84,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const prevSongSrc = playListItems[currentSongIndex].getAttribute('src');
         audioPlayer.src = prevSongSrc;
         audioPlayer.play();
-        playPauseBtn.textContent = '暂停';
+        //playPauseBtn.textContent = '暂停';
+        playPauseBtn.style.backgroundImage = 'url("./img/pauseBtn.png")';
         updateMusicTitle(currentSongIndex);
     }
 
@@ -92,7 +95,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const nextSongSrc = playListItems[currentSongIndex].getAttribute('src');
         audioPlayer.src = nextSongSrc;
         audioPlayer.play();
-        playPauseBtn.textContent = '暂停';
+        //playPauseBtn.textContent = '暂停';
+        playPauseBtn.style.backgroundImage = 'url("./img/pauseBtn.png")';
         updateMusicTitle(currentSongIndex);
     }
    
@@ -107,10 +111,12 @@ document.addEventListener('DOMContentLoaded', () => {
     exitButton.addEventListener('click', function() {
         if (Player.classList.contains('expanded')) {
             Player.classList.remove('expanded');
-            exitButton.textContent = '>>>';
+            //exitButton.textContent = '>>>';
+            exitButton.style.backgroundImage = 'url("./img/exitright1.png")';
         } else {
             Player.classList.add('expanded');
-            exitButton.textContent = '<<<';
+           // exitButton.textContent = '<<<';
+           exitButton.style.backgroundImage = 'url("./img/exitleft1.png")';
         }
 
     });

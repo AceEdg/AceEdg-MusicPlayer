@@ -38,7 +38,8 @@ body {
 #Player {
   width: 321px;
   height: 120px;
-  background-image: url(../img/test_cyperpunk.jpg); /* 背景图片 */
+  /*background-image: url(../img/test_cyperpunk.jpg); /* 背景图片 */
+  background-color: wheat;
   border-radius: var(--border-radius); /* 圆角半径 */
   box-shadow: var(--box-shadow); /* 阴影效果 */
   padding: var(--padding); /* 内边距 */
@@ -62,6 +63,36 @@ body {
     width: 100%; /* 宽度占满整个容器 */
 }
 
+#playPauseBtn{
+  background-image: url(../img/playBtn.png);
+  background-color: rgba(0, 0, 0, 0);
+  padding: 5px;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    background-size: contain; /* 确保背景图片覆盖整个按钮 */
+    background-repeat: no-repeat; /* 防止背景图片重复 */
+    background-position: center; /* 将背景图片居中 */
+    color: transparent; /* 使文本透明 */
+    height: 30px;
+    width: 30px;
+}
+
+#prevBtn{
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  
+}
+
+#nextBtn{
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+
+}
 
 /* 隐藏音频元素 */
 audio {
@@ -70,12 +101,14 @@ audio {
 
 /* 设置切换播放列表按钮样式 */
 #listButton {
-    margin-bottom: 10px;
-    padding: 10px 20px;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  text-decoration: none;
     cursor: pointer;
 }
 
 #playList {
+
   width: 320px;
   height: 200px;
   border-radius: var(--border-radius); /* 圆角半径 */
@@ -87,18 +120,26 @@ audio {
 
 #exitButton {
   position: absolute;
+  background-image: url(../img/exitleft1.png);
+  background-size: contain; /* 确保背景图片覆盖整个按钮 */
+  background-repeat: no-repeat; /* 防止背景图片重复 */
+  background-position: center; /* 将背景图片居中 */
+  color: transparent; /* 使文本透明 */
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  text-decoration: none;
   right: 0;
   top: 50%;
   height: 30%;
   margin-bottom: 10px;
-  padding: 10px 5px;
+  padding: 15px 15px;
   cursor: pointer;
   transform: translateY(-50%);
   transition: transform 0.5s ease;
 }
 
 .collapsible {
-  border: 1px solid #ccc;
+  border: 1px solid ;
   padding: 10px;
   max-height: 0; /*从折叠状态开始*/
   overflow: hidden;
