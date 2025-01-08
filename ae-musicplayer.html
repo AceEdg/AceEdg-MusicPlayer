@@ -5,11 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>这是一个测试演示</title>
     <link rel="stylesheet" href="./css/ae-musicplayerstyle.css">
+    <style>
+        body {
+            background-color: #151718;
+        }
+    </style>
 </head>
 <body>
     <div id="mainbody">
         <div id="Player" class="mainbody"> 
             <div class="controls">
+                <div id="songImage"></div>
                 <span id="musictitle">未播放</span>
                 <input type="range" id="seekBar" min="0" value="0" max="100">
                 <span id="currentTime">0:00</span> / <span id="duration">0:00</span><br>
@@ -23,9 +29,9 @@
         </div>
         <div id="playList" class="collapsible">
                 <ul>
-                    <li src="./File/RDJMB x SECMOS - Getting Started (Elluzion Flip).mp3">Getting Started</li>
-                    <li src="./File/Somewhere I Belong.flac">Somewhere I Belong</li>
-                    <li src="./File/Linkin Park - Faint.flac">Faint</li>
+                    <li src="./File/RDJMB x SECMOS - Getting Started (Elluzion Flip).mp3" data-image="">Getting Started</li>
+                    <li src="./File/Somewhere I Belong.flac" data-image="./img/somewhereibelong.jpg">Somewhere I Belong</li>
+                    <li src="./File/Linkin Park - Faint.flac" data-image="./img/faint.png">Faint</li>
                 </ul>
         </div>
         
