@@ -76,11 +76,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function updateMusicTitleAndImage(index) {
-    const songText = playListItems[index].textContent.trim();
-    musictitle.textContent = songText;
+        playListItems.forEach(item => {
+            item.classList.remove('current-playing');
+        });
 
-    const songImageSrc = playListItems[index].getAttribute('data-image');
-    songImage.style.backgroundImage = `url(${songImageSrc})`;
+        const currentItem = playListItems[index];
+        currentItem.classList.add('current-playing');
+
+        const songText = playListItems[index].textContent.trim();
+        musictitle.textContent = songText;
+        const songImageSrc = playListItems[index].getAttribute('data-image') || './img/default.png';
+        songImage.style.backgroundImage = `url(${songImageSrc})`;
+
+        currentItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
     }
     function prevSong() {
         currentSongIndex = (currentSongIndex - 1 + playListItems.length) % playListItems.length;
