@@ -9,15 +9,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const playList = document.getElementById('playList');
     const exitButton = document.getElementById('exitButton');
     const Player = document.getElementById('mainbody');
-    const prevBtn = document.getElementById('prevBtn');  // 上一曲按钮
-    const nextBtn = document.getElementById('nextBtn');  // 下一曲按钮
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
     const musictitle = document.getElementById('musictitle');
+    const songImage = document.getElementById('songImage');
 
     const playListItems = playList.querySelectorAll('li');
 
     let currentSongIndex = 0;
-
-
 
     playPauseBtn.addEventListener('click', () => {
         if (audioPlayer.paused) {
@@ -57,25 +56,39 @@ document.addEventListener('DOMContentLoaded', () => {
             audioPlayer.play();
             playPauseBtn.style.backgroundImage = 'url("./img/pauseBtn.png")';
             currentSongIndex = Array.from(playListItems).indexOf(this);
-            updateMusicTitle(currentSongIndex);
+            updateMusicTitleAndImage(currentSongIndex);
         });
     });
 
     audioPlayer.addEventListener('ended', () => {
-        nextSong();  
+        nextSong(); 
+        updateMusicTitleAndImage(currentSongIndex); 
     });
 
     prevBtn.addEventListener('click', () => {
         prevSong();
+        updateMusicTitleAndImage(currentSongIndex);
     });
 
     nextBtn.addEventListener('click', () => {
         nextSong();
+        updateMusicTitleAndImage(currentSongIndex);
     });
 
-    function updateMusicTitle(index) {
-    const songText = playListItems[index].textContent.trim();
-    musictitle.textContent = songText;
+    function updateMusicTitleAndImage(index) {
+        playListItems.forEach(item => {
+            item.classList.remove('current-playing');
+        });
+
+        const currentItem = playListItems[index];
+        currentItem.classList.add('current-playing');
+
+        const songText = playListItems[index].textContent.trim();
+        musictitle.textContent = songText;
+        const songImageSrc = playListItems[index].getAttribute('data-image') || './img/default.png';
+        songImage.style.backgroundImage = `url(${songImageSrc})`;
+
+        currentItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
     }
     function prevSong() {
         currentSongIndex = (currentSongIndex - 1 + playListItems.length) % playListItems.length;
@@ -83,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
         audioPlayer.src = prevSongSrc;
         audioPlayer.play();
         playPauseBtn.style.backgroundImage = 'url("./img/pauseBtn.png")';
-        updateMusicTitle(currentSongIndex);
+        updateMusicTitleAndImage(currentSongIndex);
     }
     function nextSong() {
         currentSongIndex = (currentSongIndex + 1) % playListItems.length;
@@ -91,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
         audioPlayer.src = nextSongSrc;
         audioPlayer.play();
         playPauseBtn.style.backgroundImage = 'url("./img/pauseBtn.png")';
-        updateMusicTitle(currentSongIndex);
+        updateMusicTitleAndImage(currentSongIndex);
     }
    
     playListButton.addEventListener('click', function() {
@@ -113,5 +126,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     });
 
-    updateMusicTitle(currentSongIndex);    
+    updateMusicTitleAndImage(currentSongIndex);    
 });

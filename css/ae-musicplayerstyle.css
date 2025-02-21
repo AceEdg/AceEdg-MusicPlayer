@@ -2,24 +2,21 @@
   --padding: 20px; /* 内边距 */
   --border-radius: 10px; /* 圆角半径 */
   --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 阴影效果 */  
-} 
-
-body {
-  font-family: Arial, sans-serif;  
-  text-align: center; /* 文本居中 */
-  background-color: black; /* 背景颜色 */
-  margin: 0; /* 去除默认外边距 */
 }
 
 #mainbody{
-  position: absolute; /* 绝对定位 */
-  bottom: 20px; /* 距离底部 0px */
-  left: 0px; /* 距离左边 0px */
-  display: flex; /* 使用 Flexbox 布局 */
+  will-change: transform;
+  font-family: "腾祥智黑简-W4";  
+  text-align: center; 
+  margin: 0;
+  position: absolute;
+  bottom: 20px;
+  left: 0px;
+  display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* 水平居左 */
-  align-items: flex-end; /* 垂直居底 */
-  padding: 0; /* 留出一定的内边距 */
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding: 0;
   transform: translateX(-332px);
   transition: transform 0.7s ease;
 }
@@ -31,8 +28,7 @@ body {
 #Player {
   width: 321px;
   height: 120px;
-  /*background-image: url(../img/test_cyperpunk.jpg); /* 背景图片 */
-  background-color: wheat;
+  background-image: url(../img/background.jpg); /* 背景图片 */
   border-radius: var(--border-radius); /* 圆角半径 */
   box-shadow: var(--box-shadow); /* 阴影效果 */
   padding: var(--padding); /* 内边距 */
@@ -41,47 +37,75 @@ body {
   background-repeat: no-repeat; /* 背景图片不重复 */ 
 }
 
+#songImage {
+    position: absolute;
+    top: 5px;
+    left: 30px;
+    width: 47px;
+    height: 47px;
+    background-size: cover;
+    background-position: center;
+    margin-right: 10px; 
+}
+
 #musictitle{ 
-  background-color: #fff;
+  font-size: 20px;
+  font-weight:550;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: rgba(32,36,37,0.46);
+  color: #fff;
+}
+
+#currentTime, #duration {
+  font-weight: bold;
+  background-color: rgba(32,36,37,0.46);
+  padding: 3px;
+  border-radius: 10px;
+  color: #fff; /* 设置时间显示为白色 */
 }
 
 #Player .controls {
-  margin-top: 10px; /* 上外边距 */
+  margin-top: 5px; /* 上外边距 */
 }
 
 #seekBar {
+  color:#202425;
   width: 100%; /* 宽度占满整个容器 */
+}
+
+#control{
+  margin-left:70px;
+  margin-right:70px;
+  padding: 2px;
+  border-radius: 10px;
+  margin-top: 10px;
+  background-color: rgba(32,36,37,0.46);
+}
+
+.btn { /* 创建通用按钮类 */
+  background-color: transparent;
+  padding: 5px;
+  border: none;
+  cursor: pointer;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: transparent;
+  height: 27px;
+  width: 27px;
 }
 
 #playPauseBtn{
   background-image: url(../img/playBtn.png);
-  background-color: rgba(0, 0, 0, 0);
-  padding: 5px;
-  border: none;
-  text-decoration: none;
-  cursor: pointer;
-  background-size: contain; /* 确保背景图片覆盖整个按钮 */
-  background-repeat: no-repeat; /* 防止背景图片重复 */
-  background-position: center; /* 将背景图片居中 */
-  color: transparent; /* 使文本透明 */
-  height: 30px;
-  width: 30px;
 }
 
 #prevBtn{
-  background-color: rgba(0, 0, 0, 0);
-  border: none;
-  text-decoration: none;
-  cursor: pointer;
-  
+  background-image: url(../img/prevBtn5.png);
 }
 
 #nextBtn{
-  background-color: rgba(0, 0, 0, 0);
-  border: none;
-  text-decoration: none;
-  cursor: pointer;
-
+  background-image: url(../img/nextBtn3.png);
 }
 
 audio {
@@ -89,28 +113,62 @@ audio {
 }
 
 #listButton {
-  background-color: rgba(0, 0, 0, 0);
-  border: none;
-  text-decoration: none;
-  cursor: pointer;
+  background-image: url(../img/list2.png);
 }
 
 #playList {
   width: 360px;
   height: 200px;
+  cursor: pointer;
+  border: none;
+  color: #fff;
+  overflow-y: auto;
   border-radius: var(--border-radius); /* 圆角半径 */
   box-shadow: var(--box-shadow); /* 阴影效果 */
-  background-color: #fff;
+  background-color: #202425;
+}
+
+#playList::-webkit-scrollbar {
+  width: 6px;
+}
+/* 保留原有的轨道和滑块样式 */
+#playList::-webkit-scrollbar-track {
+  background: #202425;
+}
+
+#playList::-webkit-scrollbar-thumb {
+  background: rgb(121,135,136);
+  border-radius: 6px;
+}
+
+#playList::-webkit-scrollbar-thumb:hover {
+  background: rgba(115, 115, 115, 0.6);
+}
+
+#playList li {
+  margin-bottom: 5px;
+}
+
+#playList li:hover {
+  color: #99a3a4;
+}
+
+#playList li.current-playing{
+  background-color: #3a3f41;
+  color: #f0f3f4;
+  font-weight: bold;
 }
 
 #exitButton {
   position: absolute;
-  background-image: url(../img/exitleft1.png);
+  padding: 20px; /* 内边距 */
+  border-radius: 10px;
+  background-image: url(../img/exitright1.png);
   background-size: contain; /* 确保背景图片覆盖整个按钮 */
   background-repeat: no-repeat; /* 防止背景图片重复 */
   background-position: center; /* 将背景图片居中 */
   color: transparent; /* 使文本透明 */
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
   border: none;
   text-decoration: none;
   right: 0;
